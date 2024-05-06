@@ -1,5 +1,5 @@
 {
-  "name": "ink-levels-widget-example",
+  "name": "@jcoreio/clarity-ink-levels-widget-example",
   "version": "0.1.0",
   "private": true,
   "contributes": {

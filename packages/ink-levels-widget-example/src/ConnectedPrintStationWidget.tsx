@@ -39,16 +39,11 @@ export default function ConnectedPrintStationWidget({
     cutterStatus: useTagState(subtag('status/cutter')),
     completed: useTagState(subtag('completed')),
     total: useTagState(subtag('total')),
-    cyanLevel: useTagState(subtag('cyan/level')),
-    cyanMax: useTagState(subtag('cyan/max')),
-    magentaLevel: useTagState(subtag('magenta/level')),
-    magentaMax: useTagState(subtag('magenta/max')),
-    yellowLevel: useTagState(subtag('yellow/level')),
-    yellowMax: useTagState(subtag('yellow/max')),
-    blackLevel: useTagState(subtag('black/level')),
-    blackMax: useTagState(subtag('black/max')),
-    whiteLevel: useTagState(subtag('white/level')),
-    whiteMax: useTagState(subtag('white/max')),
+    cyanLevel: useTagState(subtag('levels/cyan')),
+    magentaLevel: useTagState(subtag('levels/magenta')),
+    yellowLevel: useTagState(subtag('levels/yellow')),
+    blackLevel: useTagState(subtag('levels/black')),
+    whiteLevel: useTagState(subtag('levels/white')),
   }
 
   const tagValue = (key: keyof typeof tagStates) => tagStates[key].data?.v
@@ -66,25 +61,24 @@ export default function ConnectedPrintStationWidget({
     key: 'cyan' | 'magenta' | 'yellow' | 'black' | 'white'
   ) => ({
     level: numberValue(`${key}Level`) ?? 0,
-    max: numberValue(`${key}Max`) ?? 0,
+    max: tagStates[`${key}Level`].data?.Metadata?.max ?? 0,
   })
 
   return (
-    <div ref={connectDropTarget}>
-      <PrintStationWidget
-        loading={Object.values(tagStates).some((v) => v.loading)}
-        error={Object.values(tagStates).find((v) => v.error)?.error}
-        stationLabel={tagStates?.base?.data?.Metadata?.fullName?.join('/')}
-        printerStatus={statusValue('printerStatus')}
-        cutterStatus={statusValue('cutterStatus')}
-        completed={numberValue('completed')}
-        total={numberValue('total')}
-        C={inkLevelValue('cyan')}
-        M={inkLevelValue('magenta')}
-        Y={inkLevelValue('yellow')}
-        K={inkLevelValue('black')}
-        W={inkLevelValue('white')}
-      />
-    </div>
+    <PrintStationWidget
+      loading={Object.values(tagStates).some((v) => v.loading)}
+      error={Object.values(tagStates).find((v) => v.error)?.error}
+      stationLabel={tagStates?.base?.data?.Metadata?.fullName?.join('/')}
+      printerStatus={statusValue('printerStatus')}
+      cutterStatus={statusValue('cutterStatus')}
+      completed={numberValue('completed')}
+      total={numberValue('total')}
+      C={inkLevelValue('cyan')}
+      M={inkLevelValue('magenta')}
+      Y={inkLevelValue('yellow')}
+      K={inkLevelValue('black')}
+      W={inkLevelValue('white')}
+      ref={connectDropTarget}
+    />
   )
 }

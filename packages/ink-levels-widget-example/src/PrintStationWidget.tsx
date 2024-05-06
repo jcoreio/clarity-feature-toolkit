@@ -29,22 +29,30 @@ export type PrintStationWidgetProps = z.output<
   typeof PrintStationWidgetPropsSchema
 >
 
-export default function PrintStationWidget({
-  loading,
-  error,
-  stationLabel,
-  printerStatus,
-  cutterStatus,
-  completed,
-  total,
-  C,
-  M,
-  Y,
-  K,
-  W,
-}: PrintStationWidgetProps) {
+export default React.forwardRef(function PrintStationWidget(
+  {
+    loading,
+    error,
+    stationLabel,
+    printerStatus,
+    cutterStatus,
+    completed,
+    total,
+    C,
+    M,
+    Y,
+    K,
+    W,
+  }: PrintStationWidgetProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) {
   return (
-    <Box display="flex" alignItems="stretch">
+    <Box
+      display="flex"
+      alignItems="stretch"
+      // @ts-expect-error no prop type...
+      ref={ref}
+    >
       <Box
         flexBasis="33%"
         display="flex"
@@ -149,7 +157,7 @@ export default function PrintStationWidget({
       </Section>
     </Box>
   )
-}
+})
 
 type SectionProps = React.ComponentProps<typeof Box> & {
   title: React.ReactNode
