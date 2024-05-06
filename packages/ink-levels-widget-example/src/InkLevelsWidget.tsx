@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box'
 import * as React from 'react'
 
-type InkLevel = { level: number; max: number }
+type InkLevel = { level: number; max: number; displayPrecision?: number }
 
 export type InkLevelsWidgetProps = React.ComponentProps<typeof Box> & {
   C?: InkLevel
@@ -70,7 +70,11 @@ export default function InkLevelsWidget({
                 ink.max !== 0 &&
                 Number.isFinite(ink.level) &&
                 Number.isFinite(ink.max)
-                  ? ink.level
+                  ? ink.level.toFixed(
+                      Number.isFinite(ink.displayPrecision)
+                        ? ink.displayPrecision
+                        : 0
+                    )
                   : null}
               </div>
             </Box>

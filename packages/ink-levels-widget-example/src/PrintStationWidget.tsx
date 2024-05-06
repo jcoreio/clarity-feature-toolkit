@@ -6,7 +6,11 @@ import Light from './Light'
 import z from 'zod'
 import upperFirst from './upperFirst'
 
-const InkLevelSchema = z.object({ level: z.number(), max: z.number() })
+const InkLevelSchema = z.object({
+  level: z.number(),
+  max: z.number(),
+  displayPrecision: z.number().int().min(0).max(8).optional(),
+})
 
 export const PrintStationWidgetPropsSchema = z
   .object({

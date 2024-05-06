@@ -62,6 +62,8 @@ export default function ConnectedPrintStationWidget({
   ) => ({
     level: numberValue(`${key}Level`) ?? 0,
     max: tagStates[`${key}Level`].data?.Metadata?.max ?? 0,
+    displayPrecision:
+      tagStates[`${key}Level`].data?.Metadata?.displayPrecision ?? 0,
   })
 
   return (
