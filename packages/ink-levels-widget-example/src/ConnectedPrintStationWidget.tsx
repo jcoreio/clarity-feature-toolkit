@@ -35,15 +35,15 @@ export default function ConnectedPrintStationWidget({
 
   const tagStates = {
     base: useTagState(baseTag),
-    printerStatus: useTagState(subtag('status/printer')),
-    cutterStatus: useTagState(subtag('status/cutter')),
-    completed: useTagState(subtag('completed')),
-    total: useTagState(subtag('total')),
-    cyanLevel: useTagState(subtag('levels/cyan')),
-    magentaLevel: useTagState(subtag('levels/magenta')),
-    yellowLevel: useTagState(subtag('levels/yellow')),
-    blackLevel: useTagState(subtag('levels/black')),
-    whiteLevel: useTagState(subtag('levels/white')),
+    printerStatus: useTagState(subtag('Printer Status')),
+    cutterStatus: useTagState(subtag('Cutter Status')),
+    completed: useTagState(subtag('Queue Completed')),
+    total: useTagState(subtag('Queue Length')),
+    cyanLevel: useTagState(subtag('Ink/C')),
+    magentaLevel: useTagState(subtag('Ink/M')),
+    yellowLevel: useTagState(subtag('Ink/Y')),
+    blackLevel: useTagState(subtag('Ink/B')),
+    whiteLevel: useTagState(subtag('Ink/W')),
   }
 
   const tagValue = (key: keyof typeof tagStates) => tagStates[key].data?.v
