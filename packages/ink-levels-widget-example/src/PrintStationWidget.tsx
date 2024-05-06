@@ -2,7 +2,7 @@ import * as React from 'react'
 import Box from '@material-ui/core/Box'
 import InkLevelsWidget from './InkLevelsWidget'
 import Typography from '@material-ui/core/Typography'
-// import Light from '../../components/Light'
+import Light from './Light'
 import z from 'zod'
 import upperFirst from './upperFirst'
 
@@ -71,7 +71,8 @@ export default React.forwardRef(function PrintStationWidget(
         <Box flexBasis="0px" flexGrow={1} display="flex" alignItems="stretch">
           <Section title="Printer Status" flexBasis="50%">
             <Box m={2} mt={1} display="flex" alignItems="center">
-              {/* <Light
+              <Light
+                size={30}
                 color={
                   printerStatus === 'active'
                     ? 'green'
@@ -79,11 +80,10 @@ export default React.forwardRef(function PrintStationWidget(
                     ? '#ddd'
                     : printerStatus === 'error'
                     ? 'red'
-                    : '#eee'
+                    : undefined
                 }
                 variant={printerStatus ? 'shining' : 'dimmed'}
-                contrastWith="white"
-              /> */}
+              />
               <Box ml={1}>
                 <Typography variant="h6" style={{ fontWeight: 500 }}>
                   {printerStatus ? upperFirst(printerStatus) : undefined}
@@ -93,7 +93,8 @@ export default React.forwardRef(function PrintStationWidget(
           </Section>
           <Section title="Cutter Status" flexBasis="50%">
             <Box m={2} mt={1} display="flex" alignItems="center">
-              {/* <Light
+              <Light
+                size={30}
                 color={
                   cutterStatus === 'active'
                     ? 'green'
@@ -101,11 +102,10 @@ export default React.forwardRef(function PrintStationWidget(
                     ? '#ddd'
                     : cutterStatus === 'error'
                     ? 'red'
-                    : '#eee'
+                    : undefined
                 }
                 variant={cutterStatus ? 'shining' : 'dimmed'}
-                contrastWith="white"
-              /> */}
+              />
               <Box ml={1}>
                 <Typography variant="h6" style={{ fontWeight: 500 }}>
                   {cutterStatus ? upperFirst(cutterStatus) : undefined}
