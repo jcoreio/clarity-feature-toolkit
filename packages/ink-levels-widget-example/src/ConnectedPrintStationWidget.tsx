@@ -42,7 +42,7 @@ export default function ConnectedPrintStationWidget({
     cyanLevel: useTagState(subtag('Ink/C')),
     magentaLevel: useTagState(subtag('Ink/M')),
     yellowLevel: useTagState(subtag('Ink/Y')),
-    blackLevel: useTagState(subtag('Ink/B')),
+    blackLevel: useTagState(subtag('Ink/K')),
     whiteLevel: useTagState(subtag('Ink/W')),
   }
 
