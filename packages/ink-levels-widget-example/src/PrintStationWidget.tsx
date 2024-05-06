@@ -123,9 +123,12 @@ export default React.forwardRef(function PrintStationWidget(
       <Section title="Production Queue">
         <Box flexGrow={1} />
         <Box textAlign="center" fontSize="150%">
-          {Number.isFinite(completed) && Number.isFinite(total) ? (
+          {typeof completed === 'number' &&
+          Number.isFinite(completed) &&
+          typeof total === 'number' &&
+          Number.isFinite(total) ? (
             <>
-              {completed} of {total}
+              {completed.toFixed(0)} of {total.toFixed(0)}
             </>
           ) : null}
         </Box>
