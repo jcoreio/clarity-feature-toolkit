@@ -48,7 +48,7 @@ export type CurrentTagNotification = {
   tag: string
   variant: string
   triggered?: boolean
-  severity?: 'WARNING' | 'ALARM' | 'CRITICAL'
+  severity?: 'INFO' | 'WARNING' | 'ALARM' | 'CRITICAL'
   fields: unknown
 }
 
