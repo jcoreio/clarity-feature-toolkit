@@ -57,8 +57,8 @@
     "react": "^18.3.1",
     "react-dnd": "^14.0.5",
     "semver": "^7.6.0",
-    "zod": "^3.23.5",
-    "zod-route-schemas": "^1.0.0"
+    "zod": "^3.25.7",
+    "zod-route-schemas": "^2.0.0"
   },
   "exports": {
     "./package.json": "./dist/package.json",

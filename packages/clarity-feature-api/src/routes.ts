@@ -12,7 +12,7 @@ export const customFeatureAssetRoute = new ZodRoute(
   }),
   {
     formatSchema: z.strictObject({
-      feature: z.string().transform((s) => encodeURIComponent(s)),
+      feature: z.string(),
       version: z.string().refine((version) => semver.valid(version)),
       environment: z.enum(['client', 'server']),
       filename: z.string().regex(/^[^/]+$/g),
